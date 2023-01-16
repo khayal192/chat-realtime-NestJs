@@ -5,6 +5,7 @@ const email = document.getElementById('email');
 
 //get old messages from the server
 const messages = [];
+
 function getMessages() {
   fetch('http://localhost:3002/api/chat')
     .then((response) => response.json())
@@ -16,6 +17,7 @@ function getMessages() {
     })
     .catch((err) => console.error(err));
 }
+
 getMessages();
 
 //When a user press the enter key,send message.
@@ -31,9 +33,9 @@ function loadDate(data) {
   let messages = '';
   data.map((message) => {
     messages += ` <li class="bg-primary p-2 rounded mb-2 text-light">
-      <span class="fw-bolder">${message.email}</span>
-      ${message.text}
-    </li>`;
+       <span class="fw-bolder">${message.email}</span>
+       ${message.text}
+     </li>`;
   });
   msgCont.innerHTML = messages;
 }
@@ -43,6 +45,7 @@ function loadDate(data) {
 function sendMessage(message) {
   socket.emit('sendMessage', message);
 }
+
 //Listen to recMessage event to get the messages sent by users
 socket.on('recMessage', (message) => {
   messages.push(message);

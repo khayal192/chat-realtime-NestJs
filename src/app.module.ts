@@ -11,13 +11,12 @@ import { ChatModule } from './chat/chat.module';
       port: 5432,
       username: 'postgres',
       password: 'admin',
-      database: 'chat',
+      database: 'chat_hi',
       entities: [ChatEntity],
       synchronize: true,
     }),
+    TypeOrmModule.forFeature([ChatEntity]),
     ChatModule,
   ],
-  controllers: [],
-  providers: [],
 })
 export class AppModule {}
